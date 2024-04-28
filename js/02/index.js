@@ -41,3 +41,58 @@ un1.setAttribute("aria","123");
 
 
 //16. event listeners in js 
+const el = document.getElementById('enterclick');
+el.addEventListener('click', ()=>{
+  console.log("adhithi pressed button");
+})
+
+// go on making changes or adding tag once these buttons are clicked
+// creating elements dynamically
+
+const b2 = document.getElementById('enterclick2');
+const empdiv = document.getElementById('emptycontainer');
+
+b2.addEventListener('click',()=>{
+  const h = document.createElement('h2');
+  h.textContent= "Adhithi M Gowda";
+  empdiv.appendChild(h);
+})
+
+
+//18.promises in js 
+
+let resultFromServer = fetch("https://jsonplaceholder.typicode.com/posts");
+console.log(resultFromServer); // shows promise pending , that indicates it send u when its completed , as it is a big task to do 
+
+
+
+
+const add = ()=>{
+    // var a = parseInt(prompt("enter first number"));
+    // var b = parseInt(prompt("enter second number"));
+
+    // let ans = a+b;
+    let ans =10;
+
+    // can be used like this too 
+     fetch("https://jsonplaceholder.typicode.com/posts").then((data)=>{console.log("data taken completely");
+  console.log( data);}).catch(()=>{console.log("error")}).finally(()=>console.log("finally exec"));
+
+
+    return ans;
+}
+
+// but majorly async function used in this way 
+async function getData(){
+  let result = await fetch("https://jsonplaceholder.typicode.com/posts");
+  console.log( await result.json());
+}
+getData();
+// await is used to complete the execution and wait for it 
+
+console.log("even though add function is called after get data , it is executed first");
+
+let ans = add();
+console.log(ans);
+
+
